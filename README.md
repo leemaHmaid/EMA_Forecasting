@@ -1,9 +1,7 @@
 # EMA forecasting
 
 Code for *Cross-Symptom Interactions Fail to Predict Future Symptom States Across Four
-Ecological Momentary Assessment Datasets*: a rolling-origin forecasting benchmark of
-AR(1), LASSO-VAR and each dataset's original network model (stepwise SEM, OLS VAR,
-multilevel VAR) on four public EMA datasets. This repository reproduces Figure 2.
+Ecological Momentary Assessment Datasets*
 
 ## Setup (Python 3.12)
 ```
@@ -15,7 +13,7 @@ On Windows, clone into a short path (e.g. `C:\code\`): some dependency files exc
 260-character path limit otherwise.
 
 ## Get the data
-The data are not included. Download the four files from
+Download the four files from
 [openESM](https://openesmdata.org/) (CC BY-NC 4.0; version 1.0.0 of each record) and put
 them in `data/`:
 
@@ -35,20 +33,13 @@ cite the original publications and openESM (see [References](#references)).
   many points as prompts, as in the authors' R code; their initial z-scoring is left out,
   because the protocol does its own centring and scaling.
 - **Reeves** (20 participants, 20 variables, 4 prompts/day): PCL items averaged into 20
-  symptom variables (each day's sleep answers copied to all prompts of that day), then
-  as Fisher. The 20th variable, "sleep", is the "felt sleepy" rating, as in the authors' code.
+  symptom variables, then
+  as Fisher. The 20th variable.
 - **Rowland** (125 participants, 8 items, 40 days x 6 prompts): used as recorded; missed
   prompts stay missing.
 - **Geschwind** (129 participants, 6 items): the baseline block only (6 days x 10 prompts),
   as in Bringmann et al. (2013); missed prompts stay missing. One participant without any
   answer is not included.
-
-**Prompt times.** Only Fisher and Reeves use prompt times (for detrending and
-resampling); Rowland and Geschwind use day and prompt numbers only. openESM stores the
-authors' local prompt times in UTC as if they were Europe/Berlin time; the loaders
-convert them back, which recovers the authors' local times exactly. Elapsed time is then
-computed as in the authors' R code: differences of the local prompt times in a US time
-zone (daylight saving applied).
 
 ## Reproduce Figure 2
 ```
@@ -67,24 +58,6 @@ Outputs:
   per box), `fig2_stats.csv` (AR(1) vs VAR: participants, how often AR(1) has the lower
   error, two-sided Wilcoxon p).
 
-**How the numbers are computed** (`src/emaforecast/protocol/`, settings per dataset in
-`src/emaforecast/config.py`):
-- Each participant is evaluated separately. For each training window of W days, the
-  models are fitted on days 1..W and tested on day W + 1; the window then grows by a day.
-- Training data are centred on the participant's training mean and divided by a global
-  SD per item. Models learn from lag-1 pairs: every consecutive pair for Fisher/Reeves;
-  same-day pairs with all items observed for Rowland/Geschwind. A window with too few
-  pairs is skipped for every model, so all models and baselines are scored on the same
-  forecasts.
-- **one-step**: every consecutive pair of observed prompts of the test day, each forecast
-  starting from the actual previous prompt. **one-day**: one forecast iterated to the last
-  prompt of the test day.
-- Error of a forecast: mean over items of |actual - forecast| / global SD. Figure 2 shows,
-  per participant, MAE(model) / MAE(persistence), where persistence repeats the previous
-  prompt.
-- The multilevel VAR (Geschwind) is fitted on all participants' pooled pairs of days 1..W,
-  centred on the grand mean, and each participant is forecast with their individual
-  network (fixed plus random lag effects) around a leave-one-out mean.
 
 ## Layout
 ```
