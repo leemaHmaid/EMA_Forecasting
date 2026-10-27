@@ -1,5 +1,5 @@
 """
-Data layer tests (emaforecast.data). They need the openESM files in data/ (docs/data.md)
+Data layer tests (emaforecast.data). They need the openESM files in data/ (see the README)
 and are skipped otherwise.
 
 1. Every dataset built from the openESM files matches the reference fingerprints in

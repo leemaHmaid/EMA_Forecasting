@@ -1,6 +1,6 @@
 """Rowland & Wenzel (2020): 125 students, 8 affect items, 6 prompts/day for 40 days.
 
-Raw: openESM 0006_rowland (docs/data.md). build() reshapes it losslessly into one
+Raw: openESM 0006_rowland (see the README). build() reshapes it losslessly into one
 240-row grid per subject (no interpolation, no detrending)."""
 import numpy as np
 import pandas as pd

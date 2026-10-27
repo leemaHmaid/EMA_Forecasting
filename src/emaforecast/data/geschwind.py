@@ -1,7 +1,7 @@
 """Geschwind et al. (2011), analysed by Bringmann et al. (2013): 129 adults with
 residual depressive symptoms, 6 items, 10 prompts/day; baseline period (days 1-6) used.
 
-Raw: openESM 0010_geschwind (docs/data.md), built from Bringmann et al. (2013), Data S1."""
+Raw: openESM 0010_geschwind (see the README), built from Bringmann et al. (2013), Data S1."""
 import numpy as np
 import pandas as pd
 

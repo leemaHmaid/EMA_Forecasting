@@ -1,4 +1,4 @@
-"""Reading the openESM files (one tab-separated file per dataset, docs/data.md).
+"""Reading the openESM files (one tab-separated file per dataset; see the README).
 
 openESM stores prompt times in UTC, converted from the authors' local wall-clock times
 as if those were Europe/Berlin time. Converting back with the same zone recovers the

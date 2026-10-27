@@ -18,7 +18,7 @@ def requires_data(*datasets):
     """Skip a test unless the openESM files of these datasets are in data/."""
     missing = [d for d in datasets if not config.RAW[d].exists()]
     return pytest.mark.skipif(bool(missing),
-                              reason=f"raw data not present: {', '.join(missing)} (docs/data.md)")
+                              reason=f"raw data not present: {', '.join(missing)} (see the README)")
 
 
 requires_fisher_rdata = pytest.mark.skipif(

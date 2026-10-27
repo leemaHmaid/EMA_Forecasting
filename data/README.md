@@ -1,6 +1,6 @@
 # data/
 
-Put the four openESM files here (see [docs/data.md](../docs/data.md) for the links and checksums):
+Put the four openESM files here (see the "Get the data" section of the [README](../README.md) for the links and checksums):
 
 ```
 data/0033_fisher_ts.tsv

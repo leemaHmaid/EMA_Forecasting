@@ -7,7 +7,7 @@ Every table produced by `emaforecast.run` must equal them to 1e-12.
 Fast (default): the first subjects of Fisher, Reeves and Rowland (~4 min).
 Slow (pytest -m slow): every subject of all four datasets, Geschwind included
 (pooled mlVAR fits); about 2 h in total, Fisher alone ~50 min.
-The table tests need the data in data/ (docs/data.md) and are skipped otherwise.
+The table tests need the data in data/ (see the README) and are skipped otherwise.
 """
 from pathlib import Path
 

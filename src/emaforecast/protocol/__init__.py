@@ -1,4 +1,4 @@
-"""The rolling-origin forecasting protocol (see docs/methods.md)."""
+"""The rolling-origin forecasting protocol (described in the README)."""
 from emaforecast.protocol import tables
 from emaforecast.protocol.rolling import rolling_origin
 

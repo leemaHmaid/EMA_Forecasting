@@ -1,5 +1,5 @@
 """File locations and the per-dataset evaluation settings. Every path in the package
-comes from here. The raw data are not distributed with the code: docs/data.md says where
+comes from here. The raw data are not distributed with the code: the README says where
 to download each file and where to put it."""
 from dataclasses import dataclass
 from pathlib import Path
@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]      # repository root
 DATA = ROOT / "data"
 
-# Raw data: one openESM file per dataset (docs/data.md), placed in data/
+# Raw data: one openESM file per dataset (README, "Get the data"), placed in data/
 RAW = {
     "fisher":    DATA / "0033_fisher_ts.tsv",
     "reeves":    DATA / "0034_reeves_ts.tsv",
@@ -21,13 +21,13 @@ def raw_file(dataset):
     path = RAW[dataset]
     if not path.exists():
         raise FileNotFoundError(f"{path} not found. The raw data are not included in this "
-                                f"repository; docs/data.md says where to download it.")
+                                f"repository; see 'Get the data' in the README.")
     return path
 
 
 @dataclass(frozen=True)
 class Protocol:
-    """How the rolling-origin evaluation is run for one dataset (docs/methods.md)."""
+    """How the rolling-origin evaluation is run for one dataset (see the README)."""
     # Which lag-1 transitions the models learn from:
     #   'sequential' every consecutive row (Fisher, Reeves: equidistant resampled series)
     #   'within_day' consecutive beeps of the same day with all items observed (Rowland,

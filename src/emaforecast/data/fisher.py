@@ -1,6 +1,6 @@
 """Fisher et al. (2017): 40 adults with GAD/MDD, 21 items, 4 prompts/day.
 
-Raw: openESM 0033_fisher (docs/data.md), item values and prompt times. build() reproduces
+Raw: openESM 0033_fisher (see the README), item values and prompt times. build() reproduces
 the authors' R preprocessing (detrend + R fmm spline resampling, without scale())."""
 import numpy as np
 import pandas as pd

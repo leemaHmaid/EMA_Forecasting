@@ -1,6 +1,6 @@
 """Reeves & Fisher (2020): 20 adults with PTSD, 20 symptom variables, 4 prompts/day.
 
-Raw: openESM 0034_reeves (docs/data.md). build() reproduces the authors' R preprocessing
+Raw: openESM 0034_reeves (see the README). build() reproduces the authors' R preprocessing
 (composites, detrend + R fmm spline resampling, without scale())."""
 import numpy as np
 import pandas as pd
