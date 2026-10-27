@@ -1,0 +1,12 @@
+# Code and docs: always LF in the repository
+*.py   text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+*.R    text eol=lf
+*.r    text eol=lf
+
+# Data and reference tables: store byte-for-byte, never convert line endings
+*.tsv  -text
+*.csv  -text
+*.json -text
+*.npz  binary

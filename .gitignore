@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Raw data are not distributed (docs/data.md); only the folder's README is versioned
+data/*
+!data/README.md
+
+# Outputs
+results/
+
+# OS / tools
+.DS_Store
+.claude/
