@@ -37,8 +37,8 @@ def global_scale(series):
 
 def _memory_layout(series, protocol):
     """Within-day datasets are processed as column-major arrays. This only affects
-    the last bits of floating-point sums, and keeps results bit-identical to the
-    reference tables in tests/reference/fig2."""
+    the last bits of floating-point sums, and keeps results bit-identical to those
+    behind Figure 2."""
     if protocol.pairs == "within_day":
         return [np.asfortranarray(s) for s in series]
     return list(series)

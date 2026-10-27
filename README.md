@@ -9,7 +9,7 @@ multilevel VAR) on four public EMA datasets. This repository reproduces Figure 2
 ```
 python -m venv .venv
 .venv\Scripts\activate            # Windows  (source .venv/bin/activate on Linux/macOS)
-pip install -e ".[dev]"
+pip install -e .
 ```
 On Windows, clone into a short path (e.g. `C:\code\`): some dependency files exceed the
 260-character path limit otherwise.
@@ -26,9 +26,8 @@ them in `data/`:
 | Rowland & Wenzel (2020) | [10.5281/zenodo.17347352](https://doi.org/10.5281/zenodo.17347352) | `0006_rowland_ts.tsv` | `fe2355cd8a9b809a7b5c902fd493009c59c1592502b6d22efae53f74bf2b18c5` |
 | Geschwind et al. (2011) | [10.5281/zenodo.17347474](https://doi.org/10.5281/zenodo.17347474) | `0010_geschwind_ts.tsv` | `811f41aeaeb8dbfaa67ca8f8a5387d222701c42fc316f9eb3d61326d138bc8ee` |
 
-A missing file stops the run with a message pointing here; `pytest tests/test_data.py`
-checks that the processed data are exactly those behind Figure 2. When using the data,
-please cite the original publications and openESM (see [References](#references)).
+A missing file stops the run with a message pointing here. When using the data, please
+cite the original publications and openESM (see [References](#references)).
 
 **Preprocessing** (`src/emaforecast/data/`), following each dataset's original analysis:
 - **Fisher** (40 participants, 21 items, 4 prompts/day): linear detrending against elapsed
@@ -87,16 +86,6 @@ Outputs:
   centred on the grand mean, and each participant is forecast with their individual
   network (fixed plus random lag effects) around a leave-one-out mean.
 
-## Tests
-```
-pytest                  # data, models, Figure 2 tables on a few participants (~10 min)
-pytest -m slow          # Figure 2 tables for every participant + the multilevel model (~2 h)
-```
-The reference tables in `tests/reference/fig2/` are those Figure 2 is drawn from; every
-run must reproduce them to 1e-12. The processed data are checked against fingerprints
-(`tests/reference/data_fingerprints.json`), so the tests need the data in `data/`; without
-it they are skipped and only the data-free tests run.
-
 ## Layout
 ```
 data/                     put the four openESM files here (not included)
@@ -107,7 +96,6 @@ src/emaforecast/
     protocol/             rolling-origin evaluation, forecasts, result tables
     figures/fig2.py       Figure 2
     run.py                command line: run the evaluation
-tests/                    tests and the reference outputs of Figure 2
 ```
 
 ## References

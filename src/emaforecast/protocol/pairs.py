@@ -16,7 +16,7 @@ def lag_pairs(z, beeps_per_day, mode):
     Returns X (pairs at t-1) and Y (pairs at t), each (n_pairs, K).
     """
     # The memory layout (row- vs column-major) only changes the last bits of LassoCV's
-    # results; it is fixed per mode to keep the reference tables bit-identical.
+    # results; it is fixed per mode so that results are bit-identical to Figure 2.
     if mode == "sequential":
         z = np.ascontiguousarray(z)
         return z[:-1], z[1:]

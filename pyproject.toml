@@ -18,16 +18,5 @@ dependencies = [
     "statsmodels==0.14.6",
 ]
 
-[project.optional-dependencies]
-dev = ["pytest>=8", "rdata==1.1.0"]   # rdata: optional check against the Fisher authors' R output
-
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-m 'not slow'"
-markers = ["slow: full-dataset runs, incl. the Geschwind mlVAR fits (up to ~2 h)"]
-# LassoCV does not always converge on the smallest training windows (~10 pairs);
-# the fit is still used, so this warning is expected.
-filterwarnings = ["ignore::sklearn.exceptions.ConvergenceWarning"]
